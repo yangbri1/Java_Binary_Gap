@@ -24,20 +24,51 @@ public class BinaryGap {
         // ... w/ a default capacity of 16 characters
         StringBuilder binaryRep = new StringBuilder();
 
-        // while user given 'userNum' 
+        // while user given 'userNum' DN equal 0 ...
         while(userNum != 0){
 
+            // if 'userNum' is divisible by 2 ...
+            // ... remainder is 0 / even ...
             if(userNum % 2 == 0){
+                // call StringBuilder '.append()' to add '0' to end of StringBuilder ...
+                // Note: '.append()' method accepts 'char' & cast it to 'String'
                 binaryRep.append("0");
             }
-            else{
+            // otw if the remainder is 1 / odd ...
+            else if(userNum % 2 == 1){
+                // '.append()' '1' to end of StringBuilder
                 binaryRep.append("1");
             }
+            
+            // divide the number by 2 & update the number to the quotient 
             userNum /= 2;
             
         }
 
-        System.out.println(binaryRep.reverse());
+        // output the binary representation for the user given 'int'
+        // Note: 'StringBuilder' .reverse() method increases the time complexity to O(n) when the n is the length of the 'String'
+        // ... this is b/c the algo must iterate via 'char' ary & swap char from both ends towards the center
+        StringBuilder binaryRepReverse = binaryRep.reverse();
+        System.out.println(binaryRepReverse);
+
+        // What are pre-pending it instead of appending & then having to reverse?
+        // Would that reduce the time complexity?
+        /* Note: Wait within the scope of this project --- we are only trying to find the longest (unbroken) binary gap ...
+        ** ... aka the longest chain of unbroken "0" so actual binary representation DN orientation DN matter ...
+        ** ... StringBuilder's .reverse() could be removed to reduce possible time complexity */
+
+        int firstZeroCnt = 0;
+        int secondZeroCnt = 0;
+
+        for(int i = 0; i < binaryRepReverse.length(); ++i){
+            if(firstZeroCnt == 0){
+                if(binaryRepReverse.charAt(i) == '0'){
+
+            }
+            }
+            
+        }
+        
 
     }
 }
